@@ -1,0 +1,26 @@
+title: Karine Levonyan
+first_name: Karine
+last_name: Levonyan
+email: ""
+description: Research Scientist / AI
+baseurl: ""
+url: "https://karinelevonyan.github.io"
+
+theme: al-folio
+
+navbar_fixed: true
+footer_fixed: true
+search_enabled: false
+blog_name: blog
+permalink: /blog/:year/:title/
+
+collections:
+  projects:
+    output: false
+
+defaults:
+  - scope:
+      path: "_posts"
+      type: posts
+    values:
+      layout: post
