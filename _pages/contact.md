@@ -8,6 +8,8 @@ nav_order: 4
 
 ## Contact
 
-LinkedIn: [linkedin.com/in/karinelevonyan](https://www.linkedin.com/in/karinelevonyan){:target="_blank"}
+LinkedIn:  
+https://www.linkedin.com/in/karinelevonyan
 
-GitHub: [github.com/karine](https://github.com/karine){:target="_blank"}
+GitHub:  
+https://github.com/karine
