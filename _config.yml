@@ -17,6 +17,9 @@ collections:
   news:
     defaults:
       layout: post
+  pages:
+    output: true
+    permalink: /pages/:path/
   projects:
     output: true
     permalink: /projects/:path/
