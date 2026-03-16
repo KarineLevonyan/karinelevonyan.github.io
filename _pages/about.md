@@ -9,6 +9,8 @@ profile:
   align: right
   image: profile.jpg
   image_circular: false
+
+social: true
 ---
 
 ## Karine Levonyan
@@ -40,11 +42,13 @@ I am an AI Research Scientist with a strong foundation in mathematics and artifi
   {% endfor %}
 </ul>
 
+---
 
 ### Links
 
-- GitHub: https://github.com/karine  
-- LinkedIn: https://www.linkedin.com/in/karinelevonyan  
+- [Google Scholar](https://scholar.google.com/citations?user=L--pFAcAAAAJ&hl=en)
+- [GitHub](https://github.com/karine)
+- [LinkedIn](https://www.linkedin.com/in/karinelevonyan)
 
 ---
 

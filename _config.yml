@@ -6,6 +6,9 @@ description: Research Scientist / AI
 baseurl: ""
 url: "https://karinelevonyan.github.io"
 
+# Social / Scholar
+scholar_userid: L--pFAcAAAAJ
+github_username: KarineLevonyan
 
 navbar_fixed: true
 footer_fixed: true
@@ -14,28 +17,14 @@ blog_name: blog
 permalink: /blog/:year/:title/
 
 collections:
-  news:
-    defaults:
-      layout: post
-  pages:
-    output: true
-    permalink: /pages/:path/
   projects:
     output: true
     permalink: /projects/:path/
-  teaching:
-    output: true
-    permalink: /teaching/:path/
 
 defaults:
   - scope:
-      path: ""
-      type: pages
-    values:
-      layout: page
-  - scope:
       path: "_pages"
-      type: pages        # ← this makes _pages/ files get processed
+      type: pages
     values:
       layout: page
   - scope:
