@@ -1,29 +1,24 @@
-<header>
-  <nav>
-    <a href="{{ '/' | relative_url }}">
-      {% if site.title == 'blank' %}
-        {% if site.first_name %}{{ site.first_name }}{% endif %}
-        {% if site.middle_name %} {{ site.middle_name }}{% endif %}
-        {% if site.last_name %} {{ site.last_name }}{% endif %}
-      {% else %}
-        {{ site.title }}
-      {% endif %}
-    </a>
+<header class="site-header">
+  <div class="container">
+    <nav class="navbar">
+      <a class="navbar-brand" href="{{ '/' | relative_url }}">
+        {% if site.title == 'blank' %}
+          {% if site.first_name %}{{ site.first_name }}{% endif %}
+          {% if site.middle_name %} {{ site.middle_name }}{% endif %}
+          {% if site.last_name %} {{ site.last_name }}{% endif %}
+        {% else %}
+          {{ site.title }}
+        {% endif %}
+      </a>
 
-    {% assign sorted_pages = site.pages | sort: 'nav_order' %}
-    {% for p in sorted_pages %}
-      {% if p.nav and p.autogen == null %}
-        {% unless p.permalink == '/' %}
-          {% if p.permalink contains '://' %}
-            {% assign url = p.permalink %}
-          {% elsif p.permalink contains '/blog/' %}
-            {% assign url = '/blog/' %}
-          {% else %}
-            {% assign url = p.url %}
+      <div class="navbar-nav">
+        {% assign sorted_pages = site.pages | sort: "nav_order" %}
+        {% for p in sorted_pages %}
+          {% if p.nav == true %}
+            <a class="nav-link" href="{{ p.url | relative_url }}">{{ p.title }}</a>
           {% endif %}
-          <a href="{{ url | relative_url }}">{{ p.title }}</a>
-        {% endunless %}
-      {% endif %}
-    {% endfor %}
-  </nav>
+        {% endfor %}
+      </div>
+    </nav>
+  </div>
 </header>
