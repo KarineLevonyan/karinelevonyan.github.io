@@ -14,12 +14,34 @@ blog_name: blog
 permalink: /blog/:year/:title/
 
 collections:
+  news:
+    defaults:
+      layout: post
   projects:
-    output: false
+    output: true
+    permalink: /projects/:path/
+  teaching:
+    output: true
+    permalink: /teaching/:path/
 
 defaults:
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: page
+  - scope:
+      path: "_pages"
+      type: pages        # ← this makes _pages/ files get processed
+    values:
+      layout: page
   - scope:
       path: "_posts"
       type: posts
     values:
       layout: post
+  - scope:
+      path: "_projects"
+      type: projects
+    values:
+      layout: project
