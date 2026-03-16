@@ -1,24 +1,16 @@
-<header class="site-header">
-  <div class="container">
-    <nav class="navbar">
-      <a class="navbar-brand" href="{{ '/' | relative_url }}">
-        {% if site.title == 'blank' %}
-          {% if site.first_name %}{{ site.first_name }}{% endif %}
-          {% if site.middle_name %} {{ site.middle_name }}{% endif %}
-          {% if site.last_name %} {{ site.last_name }}{% endif %}
-        {% else %}
-          {{ site.title }}
-        {% endif %}
-      </a>
+<header style="background:#1f2937; padding:16px 24px;">
+  <nav style="display:flex; gap:20px; align-items:center; flex-wrap:wrap;">
+    <a href="{{ '/' | relative_url }}" style="color:white; text-decoration:none; font-weight:700;">
+      {{ site.title }}
+    </a>
 
-      <div class="navbar-nav">
-        {% assign sorted_pages = site.pages | sort: "nav_order" %}
-        {% for p in sorted_pages %}
-          {% if p.nav == true %}
-            <a class="nav-link" href="{{ p.url | relative_url }}">{{ p.title }}</a>
-          {% endif %}
-        {% endfor %}
-      </div>
-    </nav>
-  </div>
+    {% assign sorted_pages = site.pages | sort: "nav_order" %}
+    {% for p in sorted_pages %}
+      {% if p.nav == true and p.permalink != '/' %}
+        <a href="{{ p.url | relative_url }}" style="color:white; text-decoration:none;">
+          {{ p.title }}
+        </a>
+      {% endif %}
+    {% endfor %}
+  </nav>
 </header>

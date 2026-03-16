@@ -29,6 +29,18 @@ I am an AI Research Scientist with a strong foundation in mathematics and artifi
 
 ---
 
+## Recent Posts
+
+<ul>
+  {% for post in site.posts limit:3 %}
+    <li>
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      <span>— {{ post.date | date: "%B %d, %Y" }}</span>
+    </li>
+  {% endfor %}
+</ul>
+
+
 ### Links
 
 - GitHub: https://github.com/karine  
