@@ -44,6 +44,34 @@ I am an AI Research Scientist with a strong foundation in mathematics and artifi
 
 ---
 
+### Selected Publications
+
+**Towards ML-based Assessment of Synthetic Characters Heads**
+I. Borovikov, K. Levonyan, P. Elliott, E. Danvoye
+*IEEE 19th International Conference on Automatic Face and Gesture Recognition*, 2025
+
+**System for Automated Generation of Facial Shapes for Virtual Character Models**
+I. Borovikov, K. Levonyan, M. Anghelescu, D. Auclair, A. Ravikumar, et al.
+*US Patent App. 18/194,074*, 2024
+
+**Practical Parametric Synthesis of Realistic Pseudo-Random Face Shapes**
+I. Borovikov, K. Levonyan, M. Anghelescu
+*IEEE 17th International Conference on Automatic Face and Gesture Recognition*, 2023
+
+**Puzzle Validation Using Heuristic Evaluation**
+J.H.S. Harder, K.A. Levonyan, M. Sardari
+*US Patent App. 17/643,106*, 2022
+
+**Domain Engineering for Applied Monocular Reconstruction of Parametric Faces**
+I. Borovikov, K. Levonyan, J. Rein, P. Wrotek, N. Victor
+*arXiv preprint arXiv:2209.02600*, 2022
+
+**Automated Graph Genetic Algorithm Based Puzzle Validation for Faster Game Design**
+K. Levonyan, J. Harder, F.D.M. Silva
+*IEEE Congress on Evolutionary Computation (CEC)*, 2022
+
+---
+
 ### Links
 
 - [Google Scholar](https://scholar.google.com/citations?user=L--pFAcAAAAJ&hl=en)
