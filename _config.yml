@@ -6,6 +6,9 @@ description: Research Scientist / AI
 baseurl: ""
 url: "https://karinelevonyan.github.io"
 
+include:
+  - _pages
+
 max_width: 800px
 
 # Social / Scholar
