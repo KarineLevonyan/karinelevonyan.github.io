@@ -15,9 +15,13 @@ social: true
 
 ## Karine Levonyan
 
-Research Scientist / Data Scientist / AI
+Research Scientist / AI
 
-I am an AI Research Scientist with a strong foundation in mathematics and artificial intelligence. My expertise spans both theoretical frameworks and practical applications in AI, with a focus on facial recognition, computer vision, and algorithmic optimization. I'm passionate about developing innovative solutions that bridge the gap between theoretical research and practical applications in AI.
+I'm a research scientist who came to AI through computational physics and numerical linear algebra. That background shaped how I think: I want to understand models from first principles, not just use them.
+
+At Stanford I spent years building intuition for how complex systems behave — and I bring that same curiosity to machine learning. When a model does something unexpected, I don't move on. I dig in.
+
+These days I work on computer vision, face reconstruction, and graph neural networks for sparse data. Lately I've been thinking a lot about latent spaces — there's something elegant about using them to peek inside neural networks and understand what they've actually learned.
 
 ---
 
@@ -27,7 +31,12 @@ I am an AI Research Scientist with a strong foundation in mathematics and artifi
 - Computer Vision  
 - Facial Recognition  
 - Algorithmic Optimization  
+- Numerical Linear Algebra
 - AI for Digital Content Creation  
+- Graph Neural Networks
+- Embeddings for unstructured data
+- Mechanistic Interpretability
+- World Models
 
 ---
 
