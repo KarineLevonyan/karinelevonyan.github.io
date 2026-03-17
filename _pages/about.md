@@ -47,7 +47,6 @@ I am an AI Research Scientist with a strong foundation in mathematics and artifi
 ### Links
 
 - [Google Scholar](https://scholar.google.com/citations?user=L--pFAcAAAAJ&hl=en)
-- [GitHub](https://github.com/karine)
 - [LinkedIn](https://www.linkedin.com/in/karinelevonyan)
 
 ---
