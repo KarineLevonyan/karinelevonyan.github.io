@@ -2,7 +2,7 @@
 layout: page
 title: education
 permalink: /education/
-nav: true
+nav: false
 nav_order: 3
 ---
 
