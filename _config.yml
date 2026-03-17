@@ -19,12 +19,6 @@ blog_name: blog
 permalink: /blog/:year/:title/
 
 collections:
-  news:
-    output: false    # exists to prevent Liquid errors, but won't show in nav
-    permalink: /news/:path/
-  teaching:
-    output: false    # exists to prevent Liquid errors, but won't show in nav
-    permalink: /teaching/:path/
   projects:
     output: true
     permalink: /projects/:path/
@@ -41,17 +35,25 @@ defaults:
     values:
       layout: post
   - scope:
-      path: "_news"
-      type: news
-    values:
-      layout: post
-  - scope:
       path: "_projects"
       type: projects
     values:
       layout: project
-  - scope:
-      path: "_teaching"
-      type: teaching
-    values:
-      layout: page
+
+# Third party libraries
+third_party_libraries:
+  jquery:
+    url:
+      js: "https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"
+    integrity:
+      js: "sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+  mdb:
+    url:
+      css: "https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css"
+      js: "https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js"
+    integrity:
+      css: "sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw="
+      js: "sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA="
+  google_fonts:
+    url:
+      fonts: "https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
