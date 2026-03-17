@@ -5,8 +5,8 @@ email: ""
 description: Research Scientist / AI
 baseurl: ""
 url: "https://karinelevonyan.github.io"
+
 max_width: 800px
- 
 
 # Social / Scholar
 scholar_userid: L--pFAcAAAAJ
@@ -19,6 +19,12 @@ blog_name: blog
 permalink: /blog/:year/:title/
 
 collections:
+  news:
+    output: false    # exists to prevent Liquid errors, but won't show in nav
+    permalink: /news/:path/
+  teaching:
+    output: false    # exists to prevent Liquid errors, but won't show in nav
+    permalink: /teaching/:path/
   projects:
     output: true
     permalink: /projects/:path/
@@ -35,7 +41,17 @@ defaults:
     values:
       layout: post
   - scope:
+      path: "_news"
+      type: news
+    values:
+      layout: post
+  - scope:
       path: "_projects"
       type: projects
     values:
       layout: project
+  - scope:
+      path: "_teaching"
+      type: teaching
+    values:
+      layout: page
