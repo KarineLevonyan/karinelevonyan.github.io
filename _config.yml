@@ -17,6 +17,7 @@ scholar_userid: L--pFAcAAAAJ
 navbar_fixed: true
 footer_fixed: true
 search_enabled: false
+enable_math: true
 blog_name: blog
 permalink: /blog/:year/:title/
 
@@ -59,3 +60,8 @@ third_party_libraries:
   google_fonts:
     url:
       fonts: "https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+  mathjax:
+    url:
+      js: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    integrity:
+      js: ""

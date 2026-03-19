@@ -601,5 +601,18 @@ figure.cover {
 }
 
 mjx-container[jax="CHTML"][display="true"] {
-  overflow-x: auto;
+  overflow-x: visible;
+}
+
+// Fix MathJax styling - remove grey backgrounds
+mjx-container *,
+mjx-math *,
+mjx-mrow *,
+mjx-mtd * {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+mjx-assistive-mml {
+  display: none !important;
 }

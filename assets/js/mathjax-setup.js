@@ -1,10 +1,13 @@
 window.MathJax = {
   tex: {
-    tags: "ams",
+    tags: "none",
     inlineMath: [
       ["$", "$"],
       ["\\(", "\\)"],
     ],
+  },
+  chtml: {
+    displayAlign: "center",
   },
   options: {
     renderActions: {
@@ -15,6 +18,9 @@ window.MathJax = {
           style.innerHTML = `
           .mjx-container {
             color: inherit;
+          }
+          mjx-mtd[style*="width"] {
+            display: none !important;
           }
         `;
           document.head.appendChild(style);
