@@ -14,6 +14,9 @@ max_width: 800px
 # Social / Scholar
 scholar_userid: L--pFAcAAAAJ
 
+# Analytics (Cronitor - privacy-focused)
+cronitor_analytics: 0cd1562b2b49fec607c8abe5099bd1b1
+
 navbar_fixed: true
 footer_fixed: true
 search_enabled: false
