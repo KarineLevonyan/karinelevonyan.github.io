@@ -8,6 +8,7 @@ url: "https://karinelevonyan.github.io"
 
 include:
   - _pages
+  - _scripts
 
 max_width: 800px
 
