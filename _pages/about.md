@@ -19,9 +19,7 @@ Research Scientist / AI
 
 I'm a research scientist who came to AI through computational physics and numerical linear algebra. That background shaped how I think: I want to understand models from first principles, not just use them.
 
-At Stanford I spent years building intuition for how complex systems behave, and I bring that same curiosity to machine learning. When a model does something unexpected, I don't move on. I dig in.
-
-These days I work on computer vision for face reconstruction, and graph neural networks for sparse data. Lately I've been thinking a lot about latent spaces. I think there's something elegant about using them to peek inside neural networks and understand what they've actually learned.
+At Stanford I spent years building intuition for how complex systems behave, and I bring that same curiosity to machine learning. These days I work on computer vision for face reconstruction, and graph neural networks for sparse data. Lately I've been thinking a lot about latent spaces. I think there's something elegant about using them to peek inside neural networks and understand what they've actually learned.
 
 ---
 
