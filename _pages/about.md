@@ -79,6 +79,12 @@ K. Levonyan, J. Harder, F.D.M. Silva
 
 ---
 
+### Professional Service
+
+- Reviewer, [Empathic AI Workshop](https://empai26.vercel.app/) at IEEE FG 2026
+
+---
+
 ### Links
 
 - [Google Scholar](https://scholar.google.com/citations?user=L--pFAcAAAAJ&hl=en)
