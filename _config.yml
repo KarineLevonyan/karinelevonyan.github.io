@@ -10,6 +10,13 @@ include:
   - _pages
   - _scripts
 
+exclude:
+  - post_pipeline
+  - vendor
+  - node_modules
+  - .venv
+  - venv
+
 max_width: 800px
 
 # Social / Scholar
