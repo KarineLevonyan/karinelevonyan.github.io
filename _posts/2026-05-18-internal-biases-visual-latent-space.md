@@ -151,7 +151,7 @@ This experiment mirrors section VII. Counting punished the discrete model. Conte
 
 ---
 
-## Technical Implementation Blueprint
+## Experiments Model
 
 The seven experiments above all follow the same computational flow. To replicate or extend the study:
 
