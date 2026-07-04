@@ -159,20 +159,7 @@ Each ingredient removes a specific, concrete failure mode that appeared when it 
 Training converged the readout to $\text{sentiment} = 9.62 \cdot (v_0^2 + v_1^2) - 3.63$, a circular decision boundary at radius $r^* = 0.61$. Positives land at radius ≈ 0.87 (std 0.13), negatives at ≈ 0.02 (std 0.09); the positive cloud is zero-mean (mean $(+0.05, -0.02)$) and covers the whole circle. The reserved sub-space is genuinely dedicated: a linear probe off the two reserved dims of `h3` reads sentiment at 0.97 and every other feature at 0.50–0.54 (chance), and `l5`'s effective weight on those dims is exactly 0.
 
 
-### 3.7 The same trick in a shared state, and why it fails
-
-We asked whether the velocity is even necessary. Could we put the same ring directly in a layer state, exactly where the puzzle hides country? We tried it: same zero-mean ring, same radius readout, placed in two dimensions of the shared 64-dim state `h2`, with strong mean-matching to drive sentiment's linear shadow out of the rest of the state. The ring forms and its radius decodes sentiment (0.98), but the full shared state stays linearly readable at 0.93. The linear shadow does not leave.
-
-<img src="/assets/bluedot-puzzle/state_ring/ring_state.png" alt="State ring contrast" style="width: 100%; max-width: 700px; height: auto;">
-*Figure 8. State ring: the ring forms in h2 and its radius decodes sentiment (0.98), but a linear probe on the full shared state still reads sentiment at 0.93.*
-
-This is the same wall as reconstructing the puzzle (Section 4): a feature that a state must share with the others gets encoded redundantly across its dimensions, so mean-matching leaves a detectable residual, and pushing harder with an adversary destroys the whole state. The reserved-sub-space velocity ring escapes this because the two ring dims are reserved: `l5` is masked to zero on them, so no other feature's readout shares those coordinates. A probe restricted to the reserved sub-space sits at chance (0.32).
-
-| representation | linear probe | defeats slicing? |
-|---|---|---|
-| puzzle (country XOR food), shared state h2 | 0.43 (hidden) | no, food unfolds it (0.96) |
-| velocity ring: reserved 2-D dims of $v = h_3 - h_2$ | 0.32 (blind) | yes, every cell 0.29–0.45 |
-| state ring: shared state h2 | 0.93 (not hidden) | n/a |
+We also tried the same trick in a shared state buildig the ring representation but without the velocity concept, but it failed. And that is the same reason why we couldn't reconstruct the puzzle: a feature that a state must share with the others gets encoded redundantly across its dimensions, so mean-matching leaves a detectable residual, and pushing harder with an adversary destroys the whole state. The reserved-sub-space velocity ring escapes this because the two ring dims are reserved.
 
 ---
 
