@@ -17,11 +17,12 @@ The emphasis is on two parts we found most interesting: establishing causal proo
 Standard linear probes see nothing at layer `h2` because positive `country` instances sit directly "inside" negative instances along a single axis.
 For each layer × feature pair, we fit a linear logistic-regression probe on training activations and score it on test activations. A drop in linear probe accuracy signals a non-linear representation.
 
-<div style="display: flex; gap: 1.5rem; align-items: flex-start; margin: 1rem 0;">
-<div>
-<img src="/assets/bluedot-puzzle/angle1_probe_heatmap.png" alt="probe heatmap" style="width: 100%;">
+<div style="display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: flex-start; margin: 1rem 0;">
+<div style="flex: 1 1 300px; min-width: 260px;">
+<img src="/assets/bluedot-puzzle/angle1_probe_heatmap.png" alt="probe heatmap" style="width: 100%; height: auto;">
 
 </div>
+<div style="flex: 1 1 300px; min-width: 260px; overflow-x: auto;">
 <table>
   <thead>
     <tr>
@@ -50,6 +51,7 @@ For each layer × feature pair, we fit a linear logistic-regression probe on tra
   </tbody>
 </table>
 </div>
+</div>
 
 <style>
   table { border-collapse: collapse; width: 100%; font-size: 0.9rem; margin: 1rem 0; }
@@ -58,13 +60,17 @@ For each layer × feature pair, we fit a linear logistic-regression probe on tra
   th { background: #f3f4f6; font-weight: 600; }
   tr:nth-child(even) { background: #fafafa; }
   tr.highlight { background: #fef9c3; }
+  @media (max-width: 600px) {
+    table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; font-size: 0.8rem; }
+    th, td { padding: 0.3rem 0.5rem; }
+  }
 </style>
 <em>Figure 1. Linear probe accuracy for each feature across layers. Country collapses to 0.43 at h2 and then recovers at h3. Every other feature stays above 0.97 at h2.</em>
 
 
 Country loses accuracy sharply to 0.43 at `h2` and then recovers at `h3`. A non-linear MLP probe at `h2` recovers country to 0.96, so the information is present at `h2`, just not linearly readable.
 No linear probe reads country at h2 because the positive and negative distributions share the same mean. The positive examples sit sandwiched inside the negatives along a single axis:
-<img src="/assets/bluedot-puzzle/angle3_diffmeans_hist.png" alt="diff-of-means histograms at h2" width="800">
+<img src="/assets/bluedot-puzzle/angle3_diffmeans_hist.png" alt="diff-of-means histograms at h2" style="width: 100%; max-width: 800px; height: auto;">
 *Figure 2. Projection onto each feature's diff-of-means direction. For country, the red distribution sits inside the gray: no single direction separates them.*
 
 The two within-food directions are anti-parallel. A merely food-conditional encoding would force neither. This is the XOR signature, and nothing else produces it. Linear probes fail at `h2`, but the information is present and causal. We use Distributed Alignment Search (a concept I learned from Atticus Geiger's lecture at Stanford, from Goodfire.AI) to show that an orthogonal rotation of `h2` with interchange interventions on a single rotated coordinate recovers it, and activation patching of that coordinate moves the country output.
@@ -79,7 +85,7 @@ The two within-food directions are anti-parallel. A merely food-conditional enco
 
 We can also project `h2` onto the within-food country axis and multiply by the food sign (the XOR-undo). That makes country linearly separable again, lifting probe accuracy from 0.43 to 0.93.
 
-<img src="/assets/bluedot-puzzle/lift_fold.png" alt="The XOR fold" width="700">
+<img src="/assets/bluedot-puzzle/lift_fold.png" alt="The XOR fold" style="width: 100%; max-width: 700px; height: auto;">
 *Figure 4. Left: at h2, country=1 (red) is sandwiched inside country=0 (gray), and no line separates them. Middle: marginalising over food, the two classes overlap. Right: the degree-2 fold (projection × food-sign) makes country linearly separable at 0.93. The minimal nonlinearity is a single product with food, exactly the XOR.*
 
 
@@ -99,7 +105,7 @@ The head is the original puzzle MLP kept at full depth: a frozen `all-MiniLM-L6-
 - `l5` is masked to zero on the two reserved dims for every output, so the seven regular features, which run the full original depth `h2→l4→h3→l5`, never read them.
 - We do not claim the full 64-d update is linearly blind: only the reserved sub-space is.
 
-<img src="/assets/bluedot-puzzle/velocity_ring/architecture_reserved.png" alt="Architecture diagram" width="700">
+<img src="/assets/bluedot-puzzle/velocity_ring/architecture_reserved.png" alt="Architecture diagram" style="width: 100%; max-width: 700px; height: auto;">
 *Figure 5. The full head `l1…l5` is retained: the seven regular features run the original depth `h2 → l4 → h3 → l5` (green). We form the genuine inter-layer update `v = h3 − h2` (red) and reserve two of its 64 dimensions (orange); `l5`'s weights are zeroed on those two dims so no other feature reads them. Sentiment is read from the squared radius $r^2 = v_0^2 + v_1^2$ of the reserved dims.*
 
 Training uses Adam (lr 1e-3), batch 128, 160 epochs, seed 0, MiniLM frozen. Per batch:
@@ -130,7 +136,7 @@ Each ingredient removes a specific, concrete failure mode that appeared when it 
 | radius (quadratic) readout | A linear sentiment head lets the model keep an ordinary linear direction and ignore the ring. Forcing the logit through $v_0^2 + v_1^2$ makes a zero-mean ring the natural and only way to be accurate. |
 | rank-uniform, feature-orthogonal angle | With a free angle, the model still made a ring, but tied its angle to another feature; that feature's slice then unfolded sentiment. Rank-uniform and orthogonalised angles drive every single-feature slice-cell on the reserved dims to ≈0.3. |
 
-<img src="/assets/bluedot-puzzle/velocity_ring/ring_velocity_reserved.png" alt="Reserved sub-space velocity ring" width="700">
+<img src="/assets/bluedot-puzzle/velocity_ring/ring_velocity_reserved.png" alt="Reserved sub-space velocity ring" style="width: 100%; max-width: 700px; height: auto;">
 
 *Figure 6. The reserved dims of the genuine update $v = h_3 - h_2$: positive examples (red) lie on a zero-mean circle (radius ≈ 0.87), negatives (gray) at the origin (radius ≈ 0.02). The radius separates the classes cleanly while a linear probe on the reserved dims is at chance.*
 
@@ -144,7 +150,7 @@ Each ingredient removes a specific, concrete failure mode that appeared when it 
 | radius decoder $\sqrt{v_0^2 + v_1^2}$ on reserved dims | 0.98 |
 | defeats single-feature slicing (reserved dims)? | yes, every slice-cell 0.29–0.45 |
 
-<img src="/assets/bluedot-puzzle/velocity_ring/accuracy_heatmap_reserved.png" alt="Accuracy heatmap — reserved sub-space" width="700">
+<img src="/assets/bluedot-puzzle/velocity_ring/accuracy_heatmap_reserved.png" alt="Accuracy heatmap — reserved sub-space" style="width: 100%; max-width: 700px; height: auto;">
 
 *Figure 7. Linear-probe accuracy by feature and channel. The reserved dims of the update are linearly blind for all features; sentiment is only recovered there non-linearly (by its radius).*
 
@@ -157,7 +163,7 @@ Training converged the readout to $\text{sentiment} = 9.62 \cdot (v_0^2 + v_1^2)
 
 We asked whether the velocity is even necessary. Could we put the same ring directly in a layer state, exactly where the puzzle hides country? We tried it: same zero-mean ring, same radius readout, placed in two dimensions of the shared 64-dim state `h2`, with strong mean-matching to drive sentiment's linear shadow out of the rest of the state. The ring forms and its radius decodes sentiment (0.98), but the full shared state stays linearly readable at 0.93. The linear shadow does not leave.
 
-<img src="/assets/bluedot-puzzle/state_ring/ring_state.png" alt="State ring contrast" width="700">
+<img src="/assets/bluedot-puzzle/state_ring/ring_state.png" alt="State ring contrast" style="width: 100%; max-width: 700px; height: auto;">
 *Figure 8. State ring: the ring forms in h2 and its radius decodes sentiment (0.98), but a linear probe on the full shared state still reads sentiment at 0.93.*
 
 This is the same wall as reconstructing the puzzle (Section 4): a feature that a state must share with the others gets encoded redundantly across its dimensions, so mean-matching leaves a detectable residual, and pushing harder with an adversary destroys the whole state. The reserved-sub-space velocity ring escapes this because the two ring dims are reserved: `l5` is masked to zero on them, so no other feature's readout shares those coordinates. A probe restricted to the reserved sub-space sits at chance (0.32).
