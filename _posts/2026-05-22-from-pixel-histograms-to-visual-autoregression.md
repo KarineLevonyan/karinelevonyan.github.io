@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "From Pixel Histograms to Visual Autoregression: How Images Learn to See Themselves"
-date: 2026-05-22 12:00:00 -0700
+date: 2026-07-21 12:00:00 -0700
 tags: computer-vision VAR autoregressive CNN ViT embeddings image-generation
 math: true
 ---
